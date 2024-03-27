@@ -1,26 +1,28 @@
-name: ci
+name: Continuous Integration
 
 on: push
+
 jobs:
-    test: 
-        runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                python-version: [3.12]
-        steps:
-            - name: Acessar repositório
-              uses: actions/checkout@v4
-        
-            - name: Instalar o Python
-              uses: actions/setup-python@v5
-              with:
-                python-version: ${{matrix.python-version}}
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.10", "3.11", "3.12"]  
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
 
-            - name: Instalar o poetry
-              run: pip install poetry
+      - name: Install Poetry
+        run: |
+          curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
 
-            - name: Instalar dependências com o poetry
-              run: poetry install
+      - name: Install dependencies with Poetry
+        run: poetry install
 
-            - name: Executar testes
-              run: pytest tests/test_contrato.py
+      - name: Run tests
+        run: poetry run pytest tests/test_contrato.py

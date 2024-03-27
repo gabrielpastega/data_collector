@@ -1,0 +1,15 @@
+name: ci
+
+on: pull_request
+jobs:
+    test: 
+        runs-on: ubuntu-latest
+        steps:
+            - name: primeiro CI
+              run: echo Hello world!
+        
+            - name: conteúdo do local
+              run: echo $(ls)
+
+            - name: qual o diretório
+              run: echo$(pwd)

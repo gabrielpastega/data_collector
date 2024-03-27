@@ -4,6 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["gabrielpastega <gabrielpbreis@gmail.com>"]
 readme = "README.md"
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.12"
@@ -13,6 +14,7 @@ pytest = "^8.1.1"
 email-validator = "^2.1.1"
 selenium = "^4.18.1"
 taskipy = "^1.12.2"
+openpyxl = "^3.1.2"
 
 [tool.taskipy.tasks]
 run = "lsof -ti :8501 | xargs kill -9 | streamlit run src/app.py"

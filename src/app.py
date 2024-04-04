@@ -9,7 +9,7 @@ def main():
 
     if upload_file:
         df, result, errors = process_excel(upload_file)
-        ui.display_results(df, result, errors)
+        ui.display_results(result, errors)
 
         if errors:
             ui.display_wrong_message()

@@ -1,7 +1,7 @@
 import pytest
 from datetime import datetime
 from pydantic import ValidationError
-from src.contrato import Vendas
+from src.contrato import Channels
 
 # def teste_vendas_com_dados_validos():
 #     dados_validos = {

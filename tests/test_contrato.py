@@ -47,3 +47,5 @@ from src.contrato import Channels
 
 #     with pytest.raises(ValidationError):
 #         Vendas(**dados_categoria)
+
+print('Hello, World!')

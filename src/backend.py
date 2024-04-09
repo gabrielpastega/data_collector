@@ -66,3 +66,4 @@ def process_excel(uploaded_file):
 def excel_to_sql(df):
     df.to_sql('channels', con=DATABASE_URL, if_exists='replace', index=False)
 
+# novas features adicionadas

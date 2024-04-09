@@ -2,14 +2,14 @@ from datetime import datetime
 from pydantic import BaseModel, EmailStr, PositiveFloat, PositiveInt, field_validator
 from enum import Enum
 
-# class TipoDePlanilha():
-#     channels
-#     deliveries
-#     drivers
-#     hubs
-#     orders
-#     payments
-#     stores
+class TipoDePlanilha(str, Enum):
+    CHANNELS = "channels.csv"
+    DELIVERIES = "deliveries.csv"
+    DRIVERS = "drivers.csv"
+    HUBS = "hubs.csv"
+    ORDERS = "orders.csv"
+    PAYMENTS = "payments.csv"
+    STORES = "stores.csv"
     
 # class Vendas(BaseModel):
 #     email: EmailStr
@@ -29,10 +29,10 @@ class Channels(BaseModel):
     channel_type: str
 
 class Deliveries(BaseModel):
-    delivery_id: PositiveInt
-    delivery_order_id: PositiveInt
-    driver_id: PositiveInt
-    delivery_distance_meters: PositiveFloat
+    delivery_id: int
+    delivery_order_id: int
+    driver_id: int
+    delivery_distance_meters: float
     delivery_status: str
 
 class Drivers(BaseModel):
@@ -49,21 +49,21 @@ class Hubs(BaseModel):
     hub_longitude: float
 
 class Orders(BaseModel):
-    order_id: PositiveInt
-    store_id: PositiveInt
-    channel_id: PositiveInt
-    payment_order_id: PositiveInt
-    delivery_order_id: PositiveInt
+    order_id: int
+    store_id: int
+    channel_id: int
+    payment_order_id: int
+    delivery_order_id: int
     order_status: str
-    order_amount: PositiveInt
-    order_delivery_fee: PositiveFloat 
-    order_delivery_cost: PositiveFloat 
-    order_created_hour: PositiveInt
-    order_created_minute: PositiveInt
-    order_created_day: PositiveInt 
-    order_created_month: PositiveInt
-    order_created_year: PositiveInt 
-    order_moment_created: str
+    order_amount: float
+    order_delivery_fee: float
+    order_delivery_cost: float
+    order_created_hour: int
+    order_created_minute: int
+    order_created_day: int
+    order_created_month: int
+    order_created_year: int 
+    order_moment_created: int
     order_moment_accepted: str
     order_moment_ready: str
     order_moment_collected: str
@@ -71,10 +71,27 @@ class Orders(BaseModel):
     order_moment_delivering: str
     order_moment_delivered: str
     order_moment_finished: str
-    order_metric_collected_time: PositiveFloat 
-    order_metric_paused_time: PositiveFloat
-    order_metric_production_time: PositiveFloat
-    order_metric_walking_time: PositiveFloat
-    order_metric_expediton_speed_time: PositiveFloat
-    order_metric_transit_time: PositiveFloat
-    order_metric_cycle_time: PositiveFloat
+    order_metric_collected_time: float 
+    order_metric_paused_time: float
+    order_metric_production_time: float
+    order_metric_walking_time: float
+    order_metric_expediton_speed_time: float
+    order_metric_transit_time: float
+    order_metric_cycle_time: float
+
+class Payments(BaseModel):
+    payment_id: int
+    payment_order_id: int
+    payment_amount: float
+    payment_fee: float
+    payment_method: str
+    payment_status: str
+
+class Stores(BaseModel):
+    store_id: int
+    hub_id: int
+    store_name: str
+    store_segment: str
+    store_plan_price: float
+    store_latitude: float
+    store_longitude: float
